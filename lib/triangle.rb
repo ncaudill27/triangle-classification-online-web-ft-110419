@@ -11,34 +11,46 @@ class Triangle
   end
 
   def kind
-
-    unless @side1 == @side2 && @side2 == @side3
+    
+    case
+    when @side1 == @side2 && @side2 == @side3
+      :equilateral
+    when @side1 == @side2 || @side1 == @side3 || @side2 == @side3
+      :isosceles 
+    when  @side1 != @side2 || @side1 != @side3 || @side2 != @side3
+      :scalene
+    when self.instance_variables.detect{|side| side == 0 }
       begin
         raise TriangleError
-      rescue TriangleError => triangle
-        if triange == triangle.isosceles
-          :isosceles
-        elsif triangle == triange.scalar
-          :scalar
-        else
-          triange.not_triangle
-        end
+      rescue TriangleError => bad_triangle
+        bad_triangle.not
       end
-    else
-      :equilateral
     end
+
+    
   end
+end
   
- class TriangleError < StandardError
+class TriangleError < StandardError
  
   def not_triangle
     "This is not a triangle"
   end
-  
-  def isosceles
-  end
-
-  def scalar
-  end
 
 end
+
+    # unless @side1 == @side2 && @side2 == @side3
+    #   begin
+    #     raise TriangleError
+    #   rescue TriangleError => triangle
+    #     if triange == triangle.isosceles
+    #       :isosceles
+    #     elsif triangle == triange.scalar
+    #       :scalar
+    #     else
+    #       triangle.not_triangle
+    #     end
+    #   end
+    # else
+    #   :equilateral
+    # end
