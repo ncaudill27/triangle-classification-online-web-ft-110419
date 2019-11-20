@@ -16,7 +16,13 @@ class Triangle
       begin
         raise TriangleError
       rescue TriangleError => triangle
-
+        if triange == triangle.isosceles
+          :isosceles
+        elsif triangle == triange.side1
+          :scalar
+        else
+          triange.not_triangle
+        end
       end
     else
       :equilateral
@@ -25,10 +31,14 @@ class Triangle
   
  class TriangleError < StandardError
  
+  def not_triangle
+    "This is not a triangle"
+  end
+  
   def isosceles
   end
 
   def scalar
   end
-  
+
 end
