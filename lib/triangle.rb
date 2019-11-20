@@ -13,29 +13,22 @@ class Triangle
   def kind
 
     unless @side1 == @side2 && @side2 == @side3
-      raise TriangleError
+      begin
+        raise TriangleError
+      rescue TriangleError => triangle
+
       end
     else
       :equilateral
     end
   end
-    
+  
+ class TriangleError < StandardError
+ 
+  def isosceles
   end
 
-  class TriangleError < StandardError
-
-    def equilateral
-
-    end
-
-    def isosceles
-
-    end
-
-    def scalar
-
-    end
-
+  def scalar
   end
-
+  
 end
