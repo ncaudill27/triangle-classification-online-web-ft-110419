@@ -18,7 +18,7 @@ class Triangle
       rescue TriangleError => triangle
         if triange == triangle.isosceles
           :isosceles
-        elsif triangle == triange.side1
+        elsif triangle == triange.scalar
           :scalar
         else
           triange.not_triangle
